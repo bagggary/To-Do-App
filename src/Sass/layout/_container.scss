@@ -1,0 +1,7 @@
+@use "../util/index2" as *;
+
+.container {
+  width: calc(100% - 150px);
+  margin-inline: auto;
+  padding: rem(25) 0;
+}
