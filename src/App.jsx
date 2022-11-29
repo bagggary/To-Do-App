@@ -1,10 +1,15 @@
 import React from 'react'
 import './App.css'
+import Header from './Components/Header'
+import Main from './Components/Main'
 
 function App() {
 
   return (
-    <h1>Test</h1>
+    <>
+    <Header/>
+    <Main/>
+    </>
   )
 }
 
