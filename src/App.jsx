@@ -3,6 +3,7 @@ import './App.css'
 import Header from './Components/Header'
 import Main from './Components/Main'
 import { nanoid } from 'nanoid'
+import Task from './Components/Task'
 
 function App() {
   const [doList , setDoList] = React.useState([])
@@ -21,24 +22,31 @@ function App() {
           return
       }
   }
-  function onChange(e){
-    doList.map((tasks) => {
-      if(e.target.id === tasks.id){
-        setDoList(prev => {
-          return{
-            ...prev,
-            completed : e.target.checked
-          }
-        })
-      } 
+  function onChange(event){
+    const checkedBox = doList.map((tsks) => {
+      if(event.target.id === tsks.id){
+        return {
+          ...tsks,
+          [event.target.name]: event.target.checked
+        }
+      }
+      return tsks
     })
+    setDoList(checkedBox)
   }
-  console.log(doList)
+
+  const tasks =  doList.map(tsk=> {
+    return (
+        <Task doTask = {tsk.task} completed = {tsk.completed} key={tsk.id} id = {tsk.id} change = {onChange} />
+    )
+})
 
   return (
     <>
     <Header/>
-    <Main onChange= {onChange} doList = {doList} keyHandler= {keyHandler}/>
+    <Main keyHandler= {keyHandler}>
+      {tasks}
+    </Main>
     </>
   )
 }
