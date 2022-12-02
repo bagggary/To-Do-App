@@ -1,0 +1,84 @@
+@use "../util/index2" as *;
+
+main {
+  position: relative;
+  top: 48px;
+  z-index: 3;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  h1 {
+    letter-spacing: 10px;
+    color: white;
+    margin-bottom: 0;
+  }
+  img {
+    width: 20px;
+    height: 22px;
+  }
+}
+
+.input {
+  position: relative;
+  margin-top: 32px;
+  .input-field {
+    width: 100%;
+    height: rem(48);
+    padding: rem(5) rem(0) rem(0) rem(53);
+    border-radius: rem(5);
+    border: none;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+  &::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid gray;
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    z-index: 3;
+  }
+}
+.task-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: rem(25) rem(20);
+  .complete-task {
+    @include breakpoint(large) {
+      display: flex;
+    }
+    display: none;
+    & > div {
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+.completed-options {
+  @include breakpoint(large) {
+    display: none;
+  }
+  margin-top: rem(16);
+  width: 100%;
+  height: rem(48);
+  background-color: white;
+  border-radius: rem(5);
+  display: flex;
+  justify-content: center;
+  padding: rem(16) 0;
+  & > div {
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
