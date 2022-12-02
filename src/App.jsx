@@ -7,6 +7,7 @@ import Task from './Components/Task'
 
 function App() {
   const [doList , setDoList] = React.useState([])
+  const [count , setCount] = React.useState(0)
   function keyHandler(e) {
       if(e.target.value !== ''){
           if(e.keyCode === 13){
@@ -22,6 +23,13 @@ function App() {
           return
       }
   }
+  React.useEffect(()=>{
+    let counter = 0
+    doList.map((t)=> {
+      t.completed ? setCount(counter = counter + 1 ) : counter
+    })
+    console.log(count)
+  },[onChange])
   function onChange(event){
     const checkedBox = doList.map((tsks) => {
       if(event.target.id === tsks.id){
@@ -44,7 +52,7 @@ function App() {
   return (
     <>
     <Header/>
-    <Main keyHandler= {keyHandler}>
+    <Main keyHandler= {keyHandler} counter = {doList.length - count}>
       {tasks}
     </Main>
     </>
