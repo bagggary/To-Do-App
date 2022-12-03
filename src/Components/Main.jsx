@@ -18,17 +18,17 @@ function Main(props) {
     <div className='task-option'>
         <div> {`${props.counter} items left`}</div>
         <div className='complete-task'>
-            <div>All</div>
-            <div>Active</div>
-            <div>Completed</div>
+            <div onClick={props.sort} >All</div>
+            <div onClick={props.sort}>Active</div>
+            <div onClick={props.sort}>Completed</div>
         </div>
         <div className='completed'>Clear Completed</div>
     </div>
         </div>
         <div className="completed-options">
-                <div>All</div>
-                <div>Active</div>
-                <div>Completed</div>
+                <div onClick={props.sort}>All</div>
+                <div onClick={props.sort}>Active</div>
+                <div onClick={props.sort}>Completed</div>
         </div>
     </div>
     </main>
