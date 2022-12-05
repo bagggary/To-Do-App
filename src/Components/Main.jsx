@@ -22,7 +22,7 @@ function Main(props) {
             <div onClick={props.sort}>Active</div>
             <div onClick={props.sort}>Completed</div>
         </div>
-        <div className='completed'>Clear Completed</div>
+        <div onClick={props.completion} className='completed'>Clear Completed</div>
     </div>
         </div>
         <div className="completed-options">

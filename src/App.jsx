@@ -50,7 +50,10 @@ function App() {
     setDoList(doList.filter((detletedTasks) => detletedTasks.id != id ))
     setFilteredTasks(doList.filter((detletedTasks) => detletedTasks.id != id ))
   }
-
+  function completedTasks(){
+    setDoList(doList.filter((detletedTasks) => !detletedTasks.completed))
+    setFilteredTasks(doList.filter((detletedTasks) => !detletedTasks.completed ))
+  }
   function taskFilter(event){
     if(event.target.textContent == 'All'){
       setFilteredTasks(doList)
@@ -65,14 +68,14 @@ function App() {
 
   const allTasks =filteredTasks.map(tsk=> {
     return (
-        <Task onDelete = {deleteHandling} doTask = {tsk.task} completed = {tsk.completed} key={tsk.id} id = {tsk.id} change = {onChange} />
+        <Task  onDelete = {deleteHandling} doTask = {tsk.task} completed = {tsk.completed} key={tsk.id} id = {tsk.id} change = {onChange} />
     )
 })
 
   return (
     <>
     <Header/>
-    <Main keyHandler= {keyHandler} counter = {doList.length - count} sort = {taskFilter}>
+    <Main completion = {completedTasks} keyHandler= {keyHandler} counter = {doList.length - count} sort = {taskFilter}>
       {allTasks}
     </Main>
     </>
