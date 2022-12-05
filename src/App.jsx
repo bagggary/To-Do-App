@@ -46,7 +46,10 @@ function App() {
     })
     setDoList(checkedBox)
   }
-
+  function deleteHandling(id){
+    setDoList(doList.filter((detletedTasks) => detletedTasks.id != id ))
+    setFilteredTasks(doList.filter((detletedTasks) => detletedTasks.id != id ))
+  }
 
   function taskFilter(event){
     if(event.target.textContent == 'All'){
@@ -62,7 +65,7 @@ function App() {
 
   const allTasks =filteredTasks.map(tsk=> {
     return (
-        <Task doTask = {tsk.task} completed = {tsk.completed} key={tsk.id} id = {tsk.id} change = {onChange} />
+        <Task onDelete = {deleteHandling} doTask = {tsk.task} completed = {tsk.completed} key={tsk.id} id = {tsk.id} change = {onChange} />
     )
 })
 

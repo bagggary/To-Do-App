@@ -9,7 +9,7 @@ export default function Task(props) {
         <input onClick={props.change} type="checkbox" id={props.id}  name= "completed" defaultChecked = {props.completed}/>
         <label htmlFor={props.id}>{props.doTask}</label>
         </div>
-        <img src={crossImage} alt="" />
+        <img onClick={()=> {props.onDelete(props.id)}} src={crossImage} alt="" />
     </div>
 
   )
