@@ -38,7 +38,7 @@ main {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 1px solid gray;
+    border: 1px solid hsl(233, 14%, 35%);
     position: absolute;
     top: 14px;
     left: 20px;
@@ -84,6 +84,12 @@ main {
 }
 
 #dark {
+  .header {
+    background-image: url("/src/Assests/bg-desktop-dark.jpg");
+    @include breakpoint-down("x-small") {
+      background-image: url("/src/Assests/bg-mobile-dark.jpg");
+    }
+  }
   .input {
     input[type="text"] {
       background-color: hsl(235, 24%, 19%);
@@ -138,10 +144,17 @@ main {
 }
 
 #light {
+  .header {
+    background-image: url("/src/Assests/bg-desktop-light.jpg");
+    @include breakpoint-down("x-small") {
+      background-image: url("/src/Assests/bg-mobile-light.jpg");
+    }
+  }
   .input {
     input[type="text"] {
       background-color: hsl(0, 0%, 98%);
       color: hsl(235, 19%, 35%);
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
       &::placeholder {
         color: hsl(234, 11%, 52%);
       }
@@ -149,16 +162,17 @@ main {
   }
   .tasks-container {
     background-color: hsl(0, 0%, 98%);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     .tasks {
       input[type="checkbox"] {
         &:checked {
           & + label {
-            color: hsl(233, 14%, 35%);
+            color: hsl(233, 11%, 84%);
           }
         }
       }
       label {
-        color: hsl(234, 39%, 85%);
+        color: hsl(235, 19%, 35%);
       }
     }
   }
@@ -166,17 +180,27 @@ main {
     & > div {
       &:last-child {
         &:hover {
-          color: hsl(234, 39%, 85%);
+          color: hsl(233, 14%, 35%);
         }
       }
-      color: hsl(233, 14%, 35%);
+      color: hsl(236, 9%, 61%);
     }
     .complete-task {
       & > div {
-        color: hsl(233, 14%, 35%);
+        color: hsl(236, 9%, 61%);
         &:hover {
-          color: hsl(234, 39%, 85%);
+          color: hsl(233, 14%, 35%);
         }
+      }
+    }
+  }
+  .completed-options {
+    background-color: hsl(0, 0%, 98%);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    & > div {
+      color: hsl(236, 9%, 61%);
+      &:hover {
+        color: hsl(233, 14%, 35%);
       }
     }
   }

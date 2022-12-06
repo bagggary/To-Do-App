@@ -1,5 +1,7 @@
 import React from 'react'
 import lightTheme from '../Assests/icon-sun.svg'
+import darkTheme from '../Assests/icon-moon.svg'
+
 
 function Main(props) {
     
@@ -8,7 +10,7 @@ function Main(props) {
     <div className="container">
         <div className='title'>
             <h1>TODO</h1>
-            <img src={lightTheme} alt="" className='theme'/>
+            <img onClick={props.toggleTheme} src={props.theme === 'dark' ? lightTheme : darkTheme} alt="" className='theme'/>
         </div>
         <div className='input'>
         <input onKeyDown={props.keyHandler} type="text" placeholder='Create a new todo' className='input-field' />

@@ -8,4 +8,7 @@
   width: 100vw;
   position: absolute;
   z-index: 1;
+  @include breakpoint-down("x-small") {
+    height: 200px;
+  }
 }
