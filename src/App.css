@@ -287,6 +287,11 @@ body {
   position: absolute;
   z-index: 1;
 }
+@media (max-width: 23.436875em) {
+  .header {
+    height: 200px;
+  }
+}
 
 main {
   position: relative;
@@ -328,7 +333,7 @@ main {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid gray;
+  border: 1px solid hsl(233deg, 14%, 35%);
   position: absolute;
   top: 14px;
   left: 20px;
@@ -378,6 +383,14 @@ main {
   margin-right: 0;
 }
 
+#dark .header {
+  background-image: url("/src/Assests/bg-desktop-dark.jpg");
+}
+@media (max-width: 23.436875em) {
+  #dark .header {
+    background-image: url("/src/Assests/bg-mobile-dark.jpg");
+  }
+}
 #dark .input input[type=text] {
   background-color: hsl(235deg, 24%, 19%);
   color: hsl(234deg, 39%, 85%);
@@ -416,33 +429,53 @@ main {
   color: hsl(234deg, 39%, 85%);
 }
 
+#light .header {
+  background-image: url("/src/Assests/bg-desktop-light.jpg");
+}
+@media (max-width: 23.436875em) {
+  #light .header {
+    background-image: url("/src/Assests/bg-mobile-light.jpg");
+  }
+}
 #light .input input[type=text] {
   background-color: hsl(0deg, 0%, 98%);
   color: hsl(235deg, 19%, 35%);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 #light .input input[type=text]::placeholder {
   color: hsl(234deg, 11%, 52%);
 }
 #light .tasks-container {
   background-color: hsl(0deg, 0%, 98%);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 #light .tasks-container .tasks input[type=checkbox]:checked + label {
-  color: hsl(233deg, 14%, 35%);
+  color: hsl(233deg, 11%, 84%);
 }
 #light .tasks-container .tasks label {
-  color: hsl(234deg, 39%, 85%);
+  color: hsl(235deg, 19%, 35%);
 }
 #light .task-option > div {
-  color: hsl(233deg, 14%, 35%);
+  color: hsl(236deg, 9%, 61%);
 }
 #light .task-option > div:last-child:hover {
-  color: hsl(234deg, 39%, 85%);
-}
-#light .task-option .complete-task > div {
   color: hsl(233deg, 14%, 35%);
 }
+#light .task-option .complete-task > div {
+  color: hsl(236deg, 9%, 61%);
+}
 #light .task-option .complete-task > div:hover {
-  color: hsl(234deg, 39%, 85%);
+  color: hsl(233deg, 14%, 35%);
+}
+#light .completed-options {
+  background-color: hsl(0deg, 0%, 98%);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#light .completed-options > div {
+  color: hsl(236deg, 9%, 61%);
+}
+#light .completed-options > div:hover {
+  color: hsl(233deg, 14%, 35%);
 }
 
 .tasks-container {

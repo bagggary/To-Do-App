@@ -87,7 +87,7 @@ function App() {
     <ThemeContext.Provider value={{theme , themeToggle}}>
       <div id={theme}>
         <Header /> 
-        <Main completion = {completedTasks} keyHandler= {keyHandler} counter = {doList.length - count} sort = {taskFilter}>
+        <Main theme = {theme} toggleTheme = {themeToggle} completion = {completedTasks} keyHandler= {keyHandler} counter = {doList.length - count} sort = {taskFilter}>
           {allTasks}
         </Main>
       </div>
