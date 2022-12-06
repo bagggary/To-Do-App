@@ -82,3 +82,102 @@ main {
     }
   }
 }
+
+#dark {
+  .input {
+    input[type="text"] {
+      background-color: hsl(235, 24%, 19%);
+      color: hsl(234, 39%, 85%);
+      &::placeholder {
+        color: hsl(234, 11%, 52%);
+      }
+    }
+  }
+  .tasks-container {
+    background-color: hsl(235, 24%, 19%);
+    .tasks {
+      input[type="checkbox"] {
+        &:checked {
+          & + label {
+            color: hsl(233, 14%, 35%);
+          }
+        }
+      }
+      label {
+        color: hsl(234, 39%, 85%);
+      }
+    }
+  }
+  .task-option {
+    & > div {
+      &:last-child {
+        &:hover {
+          color: hsl(234, 39%, 85%);
+        }
+      }
+      color: hsl(233, 14%, 35%);
+    }
+    .complete-task {
+      & > div {
+        color: hsl(233, 14%, 35%);
+        &:hover {
+          color: hsl(234, 39%, 85%);
+        }
+      }
+    }
+  }
+  .completed-options {
+    background-color: hsl(235, 24%, 19%);
+    & > div {
+      color: hsl(233, 14%, 35%);
+      &:hover {
+        color: hsl(234, 39%, 85%);
+      }
+    }
+  }
+}
+
+#light {
+  .input {
+    input[type="text"] {
+      background-color: hsl(0, 0%, 98%);
+      color: hsl(235, 19%, 35%);
+      &::placeholder {
+        color: hsl(234, 11%, 52%);
+      }
+    }
+  }
+  .tasks-container {
+    background-color: hsl(0, 0%, 98%);
+    .tasks {
+      input[type="checkbox"] {
+        &:checked {
+          & + label {
+            color: hsl(233, 14%, 35%);
+          }
+        }
+      }
+      label {
+        color: hsl(234, 39%, 85%);
+      }
+    }
+  }
+  .task-option {
+    & > div {
+      &:last-child {
+        &:hover {
+          color: hsl(234, 39%, 85%);
+        }
+      }
+      color: hsl(233, 14%, 35%);
+    }
+    .complete-task {
+      & > div {
+        color: hsl(233, 14%, 35%);
+        &:hover {
+          color: hsl(234, 39%, 85%);
+        }
+      }
+    }
+  }
+}

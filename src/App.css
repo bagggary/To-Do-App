@@ -271,7 +271,6 @@ a:active {
 body {
   font-family: "Josefin Sans", sans-serif;
   min-height: 100vh;
-  background-color: black;
 }
 
 .container {
@@ -379,6 +378,73 @@ main {
   margin-right: 0;
 }
 
+#dark .input input[type=text] {
+  background-color: hsl(235deg, 24%, 19%);
+  color: hsl(234deg, 39%, 85%);
+}
+#dark .input input[type=text]::placeholder {
+  color: hsl(234deg, 11%, 52%);
+}
+#dark .tasks-container {
+  background-color: hsl(235deg, 24%, 19%);
+}
+#dark .tasks-container .tasks input[type=checkbox]:checked + label {
+  color: hsl(233deg, 14%, 35%);
+}
+#dark .tasks-container .tasks label {
+  color: hsl(234deg, 39%, 85%);
+}
+#dark .task-option > div {
+  color: hsl(233deg, 14%, 35%);
+}
+#dark .task-option > div:last-child:hover {
+  color: hsl(234deg, 39%, 85%);
+}
+#dark .task-option .complete-task > div {
+  color: hsl(233deg, 14%, 35%);
+}
+#dark .task-option .complete-task > div:hover {
+  color: hsl(234deg, 39%, 85%);
+}
+#dark .completed-options {
+  background-color: hsl(235deg, 24%, 19%);
+}
+#dark .completed-options > div {
+  color: hsl(233deg, 14%, 35%);
+}
+#dark .completed-options > div:hover {
+  color: hsl(234deg, 39%, 85%);
+}
+
+#light .input input[type=text] {
+  background-color: hsl(0deg, 0%, 98%);
+  color: hsl(235deg, 19%, 35%);
+}
+#light .input input[type=text]::placeholder {
+  color: hsl(234deg, 11%, 52%);
+}
+#light .tasks-container {
+  background-color: hsl(0deg, 0%, 98%);
+}
+#light .tasks-container .tasks input[type=checkbox]:checked + label {
+  color: hsl(233deg, 14%, 35%);
+}
+#light .tasks-container .tasks label {
+  color: hsl(234deg, 39%, 85%);
+}
+#light .task-option > div {
+  color: hsl(233deg, 14%, 35%);
+}
+#light .task-option > div:last-child:hover {
+  color: hsl(234deg, 39%, 85%);
+}
+#light .task-option .complete-task > div {
+  color: hsl(233deg, 14%, 35%);
+}
+#light .task-option .complete-task > div:hover {
+  color: hsl(234deg, 39%, 85%);
+}
+
 .tasks-container {
   margin-top: 16px;
   width: 100%;
@@ -393,7 +459,7 @@ main {
   height: 3.25rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid gray;
+  border-bottom: 0.5px solid hsl(233deg, 14%, 35%);
   padding: 1rem 1.25rem 1rem 3.25rem;
 }
 .tasks .to-do-tasks {
@@ -407,7 +473,7 @@ main {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 1px solid gray;
+  border: 1px solid hsl(233deg, 14%, 35%);
   cursor: pointer;
 }
 .tasks .to-do-tasks input[type=checkbox] + label {

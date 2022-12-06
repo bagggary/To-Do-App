@@ -5,10 +5,21 @@ import Main from './Components/Main'
 import { nanoid } from 'nanoid'
 import Task from './Components/Task'
 
+export const ThemeContext = React.createContext(null)
+
 function App() {
   const [doList , setDoList] = React.useState([])
   const [filteredTasks , setFilteredTasks] = React.useState([])
   const [count , setCount] = React.useState(0)
+  const [theme , setTheme] = React.useState('dark')
+
+  const themeToggle = ()=>{
+    setTheme(prev => prev === 'light' ? 'dark' : "light")
+  }
+
+  React.useEffect(()=>{
+      document.body.style.backgroundColor = theme === 'dark' ?  'hsl(235, 21%, 11%)' : 'hsl(0, 0%, 98%)'
+  }, [theme])
 
   function keyHandler(e) {
       if(e.target.value !== ''){
@@ -73,12 +84,14 @@ function App() {
 })
 
   return (
-    <>
-    <Header/>
-    <Main completion = {completedTasks} keyHandler= {keyHandler} counter = {doList.length - count} sort = {taskFilter}>
-      {allTasks}
-    </Main>
-    </>
+    <ThemeContext.Provider value={{theme , themeToggle}}>
+      <div id={theme}>
+        <Header /> 
+        <Main completion = {completedTasks} keyHandler= {keyHandler} counter = {doList.length - count} sort = {taskFilter}>
+          {allTasks}
+        </Main>
+      </div>
+    </ThemeContext.Provider>
   )
 }
 
