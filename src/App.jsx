@@ -9,12 +9,24 @@ export const ThemeContext = React.createContext(null)
 
 function App() {
   const [doList , setDoList] = React.useState([])
-  const [filteredTasks , setFilteredTasks] = React.useState([])
+  const [filteredTasks , setFilteredTasks] = React.useState(tasksFiltered())
   const [count , setCount] = React.useState(0)
-  const [theme , setTheme] = React.useState('dark')
+  const [theme , setTheme] = React.useState(window.localStorage.getItem('theme') || 'light')
+
+  function tasksFiltered(){
+    const storedTasks = JSON.parse(localStorage.getItem('Tasks'))
+    if(storedTasks){
+      return storedTasks
+    }
+  }
+
+  React.useEffect(()=>{
+    localStorage.setItem('Tasks' , JSON.stringify(filteredTasks))
+  } , [doList])
 
   const themeToggle = ()=>{
-    setTheme(prev => prev === 'light' ? 'dark' : "light")
+       window.localStorage.setItem('theme' , theme === 'light' ? 'dark' : 'light')
+       setTheme(window.localStorage.getItem('theme'))
   }
 
   React.useEffect(()=>{
