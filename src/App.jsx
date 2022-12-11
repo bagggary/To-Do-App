@@ -134,13 +134,21 @@ function App() {
 //      </Draggable>
 //     )
 // })
+function onDragHandle(result){
+  if(!result.destination) return
+  const tsks = Array.from(filteredTasks)
+  const [reordredTsks] = tsks.splice(result.source.index , 1)
+  tsks.splice(result.destination.index, 0 , reordredTsks)
+  setFilteredTasks(tsks)
+  localStorage.setItem('Tasks' , JSON.stringify(tsks))
+}
 resetServerContext()
   return (
     <ThemeContext.Provider value={{theme , themeToggle}}>
       <div id={theme}>
         <Header /> 
-            <Main  theme = {theme} toggleTheme = {themeToggle} completion = {completedTasks} keyHandler= {keyHandler} counter = {filteredTasks.length - count} sort = {taskFilter}>
-        <DragDropContext>
+         <Main  theme = {theme} toggleTheme = {themeToggle} completion = {completedTasks} keyHandler= {keyHandler} counter = {filteredTasks.length - count} sort = {taskFilter}>
+        <DragDropContext onDragEnd={onDragHandle}>
           <Droppable droppableId= {filteredTasks.map((tsk) => tsk.id)}>
             {(provided )=>(
               <div ref={provided.innerRef} {...provided.droppableProps}>
