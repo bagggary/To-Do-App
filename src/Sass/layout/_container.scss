@@ -2,5 +2,9 @@
 
 .container {
   width: calc(100% - 48px);
+  max-width: 540px;
   margin-inline: auto;
+  @include breakpoint(large) {
+    max-width: 540px;
+  }
 }
