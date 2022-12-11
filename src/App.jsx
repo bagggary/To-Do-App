@@ -4,6 +4,8 @@ import Header from './Components/Header'
 import Main from './Components/Main'
 import { nanoid } from 'nanoid'
 import Task from './Components/Task'
+import { DragDropContext, Draggable , Droppable} from 'react-beautiful-dnd';
+import { resetServerContext } from "react-beautiful-dnd"
 
 export const ThemeContext = React.createContext(null)
 
@@ -125,19 +127,46 @@ function App() {
     }
   }
 
-  const allTasks =filteredTasks.map(tsk=> {
-    return (
-        <Task  onDelete = {deleteHandling} doTask = {tsk.task} completed = {tsk.completed} key={tsk.id} id = {tsk.id} change = {onChange} />
-    )
-})
-
+//   const allTasks =filteredTasks.map((tsk, index)=> {
+//     return (
+//       <Draggable key={tsk.id} draggableId = {tsk.id} index = {index}>
+//       <Task  onDelete = {deleteHandling} doTask = {tsk.task} completed = {tsk.completed}  id = {tsk.id} change = {onChange} />
+//      </Draggable>
+//     )
+// })
+resetServerContext()
   return (
     <ThemeContext.Provider value={{theme , themeToggle}}>
       <div id={theme}>
         <Header /> 
-        <Main theme = {theme} toggleTheme = {themeToggle} completion = {completedTasks} keyHandler= {keyHandler} counter = {filteredTasks.length - count} sort = {taskFilter}>
-          {allTasks}
-        </Main>
+            <Main  theme = {theme} toggleTheme = {themeToggle} completion = {completedTasks} keyHandler= {keyHandler} counter = {filteredTasks.length - count} sort = {taskFilter}>
+        <DragDropContext>
+          <Droppable droppableId= {filteredTasks.map((tsk) => tsk.id)}>
+            {(provided )=>(
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {filteredTasks.map((tsk , index)=> {
+                  return (
+                    <Draggable draggableId = {tsk.id}  key={tsk.id} index = {index}>
+                      {(provided)=>(
+                      <div ref={provided.innerRef} {...provided.dragHandleProps}  {...provided.draggableProps}>
+                        <Task 
+                        onDelete = {deleteHandling} 
+                        doTask = {tsk.task} 
+                        completed = {tsk.completed}
+                        key = {tsk.id} 
+                        id = {tsk.id} 
+                        change = {onChange} />
+                        </div>
+                        )}
+                    </Draggable>
+                    )
+                  })} 
+                  {provided.placeholder}
+                  </div>
+                    )}
+          </Droppable>
+        </DragDropContext>
+                    </Main>
       </div>
     </ThemeContext.Provider>
   )

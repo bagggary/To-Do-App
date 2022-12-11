@@ -16,7 +16,7 @@ function Main(props) {
         <input onKeyDown={props.keyHandler} type="text" placeholder='Create a new todo' className='input-field' />
         </div>
         <div className="tasks-container">
-    {props.children}
+            {props.children}
     <div className='task-option'>
         <div> {`${props.counter} items left`}</div>
         <div className='complete-task'>
