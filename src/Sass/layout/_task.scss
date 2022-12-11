@@ -1,6 +1,9 @@
 @use "../util/index2" as *;
 .tasks-container {
   margin-top: 16px;
+  @include breakpoint(large) {
+    margin-top: 24px;
+  }
   width: 100%;
   border-radius: 5px;
   min-height: 50px;
@@ -14,20 +17,33 @@
   justify-content: space-between;
   border-bottom: 0.5px solid hsl(233, 14%, 35%);
   padding: rem(16) rem(20) rem(16) rem(52);
+  &:hover {
+    img {
+      display: block;
+    }
+  }
+  img {
+    display: none;
+    cursor: pointer;
+  }
   .to-do-tasks {
     position: relative;
     input[type="checkbox"] {
       & + label {
         margin-left: 12px;
+        font-size: 14px;
       }
       position: absolute;
       left: rem(-32);
+      @include breakpoint(large) {
+        left: rem(-28);
+      }
       top: 0;
       appearance: none;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      border: 1px solid hsl(233, 14%, 35%);
+      border: 1px solid rgb(210 211 220);
       cursor: pointer;
       &:checked {
         &::after {

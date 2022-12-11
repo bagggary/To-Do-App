@@ -4,7 +4,6 @@ import darkTheme from '../Assests/icon-moon.svg'
 
 
 function Main(props) {
-    
   return (
     <main>
     <div className="container">
@@ -20,19 +19,20 @@ function Main(props) {
     <div className='task-option'>
         <div> {`${props.counter} items left`}</div>
         <div className='complete-task'>
-            <div onClick={props.sort} >All</div>
-            <div onClick={props.sort}>Active</div>
-            <div onClick={props.sort}>Completed</div>
+            <div onClick={props.sort} className = "comp-tsks active " >All</div>
+            <div onClick={props.sort} className = 'comp-tsks '>Active</div>
+            <div onClick={props.sort} className = 'comp-tsks '>Completed</div>
         </div>
         <div onClick={props.completion} className='completed'>Clear Completed</div>
     </div>
         </div>
         <div className="completed-options">
-                <div onClick={props.sort}>All</div>
+                <div onClick={props.sort} className = "active">All</div>
                 <div onClick={props.sort}>Active</div>
                 <div onClick={props.sort}>Completed</div>
         </div>
     </div>
+    <div className='drag'>Drag and drop to reorder list</div>
     </main>
     
   )

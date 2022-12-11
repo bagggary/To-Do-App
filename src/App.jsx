@@ -5,7 +5,6 @@ import Main from './Components/Main'
 import { nanoid } from 'nanoid'
 import Task from './Components/Task'
 import { DragDropContext, Draggable , Droppable} from 'react-beautiful-dnd';
-import { resetServerContext } from "react-beautiful-dnd"
 
 export const ThemeContext = React.createContext(null)
 
@@ -111,19 +110,31 @@ function App() {
     setFilteredTasks(filteredTasks.filter((deletedTasks) => !deletedTasks.completed))
 
   }
+
+  const setActive = (option)=>{
+   const completedOptions = document.querySelectorAll('.comp-tsks ') 
+   for(let i = 0 ; i < completedOptions.length; i++){
+    completedOptions[i].classList.remove('active')
+    if(completedOptions[i].innerHTML === option){
+      completedOptions[i].classList.add('active')
+    }
+   }
+  }
   
   function taskFilter(event){
     if(event.target.textContent == 'All'){
       const allItems = JSON.parse(localStorage.getItem('Tasks'))
-
       setFilteredTasks(allItems)
+      setActive('All')
+      
     }else if (event.target.textContent == "Active"){
       const activeTasks = JSON.parse(localStorage.getItem('Tasks')).filter(tsk => !tsk.completed)
-
       setFilteredTasks(activeTasks)
+      setActive('Active')
     }else if(event.target.textContent == 'Completed'){
       const completedTasks = JSON.parse(localStorage.getItem('Tasks')).filter(tsk => tsk.completed)
       setFilteredTasks(completedTasks)
+      setActive('Completed')
     }
   }
 
@@ -142,9 +153,8 @@ function onDragHandle(result){
   setFilteredTasks(tsks)
   localStorage.setItem('Tasks' , JSON.stringify(tsks))
 }
-resetServerContext()
   return (
-    <ThemeContext.Provider value={{theme , themeToggle}}>
+    <ThemeContext.Provider  value={{theme , themeToggle}}>
       <div id={theme}>
         <Header /> 
          <Main  theme = {theme} toggleTheme = {themeToggle} completion = {completedTasks} keyHandler= {keyHandler} counter = {filteredTasks.length - count} sort = {taskFilter}>
