@@ -14,21 +14,12 @@ function App() {
   const [theme , setTheme] = React.useState(window.localStorage.getItem('theme') || 'light')
   const [count , setCount] = React.useState(0)
 
-//  React.useEffect(() => {
-//     window.localStorage.setItem('count', count);
-//   }, [count]);
-
   React.useEffect(()=>{
     const storedData = JSON.parse(window.localStorage.getItem('Tasks'))
     if(storedData){
       setFilteredTasks(storedData)
     }
   } , [])
-  // React.useEffect(()=>{
-  //   localStorage.setItem('Tasks' , JSON.stringify(doList) )
-  // }, [doList])
-
-  //add the local storage in the final adding selection and then checked for the remaining
 
   const themeToggle = ()=>{
        window.localStorage.setItem('theme' , theme === 'light' ? 'dark' : 'light')
@@ -57,9 +48,6 @@ function App() {
       }
   }
 
-  // function sortTasks(filteredArray){
-  //   const sortedTasks = filteredArray.sort((a, b) => Number(a.completed) - Number(b.completed));
-  // }
   React.useEffect(()=>{
     let counter = 0;
     filteredTasks.map((t)=> {
@@ -69,7 +57,7 @@ function App() {
   }, [filteredTasks])
 
 
-  
+
   function onChange(event){
     const checkedBox = JSON.parse(localStorage.getItem('Tasks')).map((tsks) => {
       if(event.target.id === tsks.id){
@@ -82,8 +70,6 @@ function App() {
     })
     setDoList(checkedBox)
     setFilteredTasks(checkedBox)
-    // JSON.stringify(localStorage.setItem('Tasks' , [...JSON.parse(localStorage.getItem('Tasks')),  checkedBox]))
-    // JSON.stringify(localStorage.setItem('Tasks' , checkedBox))
     window.localStorage.setItem('Tasks' , JSON.stringify(checkedBox))
   }
   function deleteHandling(id){
@@ -96,19 +82,8 @@ function App() {
   setFilteredTasks(lS)
   }
   function completedTasks(){
-    // let index;
-    // const lS = JSON.parse(localStorage.getItem("Tasks"));
-    // for(let i = 0 ; i < lS.length ; i++){
-    //   if(lS[i].completed){
-    //     index = i;
-    //     break;
-    //   }
-    // }
-    // setDoList(doList.filter((detletedTasks) => !detletedTasks.completed))
-    // setFilteredTasks(doList.filter((detletedTasks) => !detletedTasks.completed ))
     localStorage.setItem('Tasks' , JSON.stringify(filteredTasks.filter((deletedTasks) => !deletedTasks.completed)))
     setFilteredTasks(filteredTasks.filter((deletedTasks) => !deletedTasks.completed))
-
   }
 
   const setActive = (option)=>{
@@ -138,13 +113,6 @@ function App() {
     }
   }
 
-//   const allTasks =filteredTasks.map((tsk, index)=> {
-//     return (
-//       <Draggable key={tsk.id} draggableId = {tsk.id} index = {index}>
-//       <Task  onDelete = {deleteHandling} doTask = {tsk.task} completed = {tsk.completed}  id = {tsk.id} change = {onChange} />
-//      </Draggable>
-//     )
-// })
 function onDragHandle(result){
   if(!result.destination) return
   const tsks = Array.from(filteredTasks)
