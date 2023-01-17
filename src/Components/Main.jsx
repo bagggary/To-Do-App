@@ -2,7 +2,6 @@ import React from 'react'
 import lightTheme from '../Assests/icon-sun.svg'
 import darkTheme from '../Assests/icon-moon.svg'
 
-
 function Main(props) {
   return (
     <main>
